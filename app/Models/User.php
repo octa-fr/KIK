@@ -10,17 +10,16 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-    'name',
-    'email',
-    'password',
-    'role',
-    'mitra_verified',
-    'mitra_reason'
+        'name',
+        'email',
+        'password',
+        'role',
+        'mitra_verified',
+        'mitra_reason'
     ];
 
-
     /* =====================
-       HELPER ROLE login
+       HELPER ROLE
     ===================== */
 
     public function isAdmin()
@@ -39,16 +38,18 @@ class User extends Authenticatable
     }
 
     /* =====================
-       RELATION (NANTI)
+       RELATION
     ===================== */
 
-    public function postings()
+    // posting magang milik mitra
+    public function posts()
     {
-        return $this->hasMany(Posting::class);
+        return $this->hasMany(Post::class, 'mitra_id');
     }
 
-    public function lamarans()
+    // lamaran magang milik user
+    public function internshipRequests()
     {
-        return $this->hasMany(Lamaran::class);
+        return $this->hasMany(InternshipRequest::class);
     }
 }

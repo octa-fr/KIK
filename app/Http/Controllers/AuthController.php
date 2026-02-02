@@ -47,6 +47,11 @@ class AuthController extends Controller
             }
 
             if ($user->role === 'mitra') {
+                if (!$user->mitra_verified) {
+                    Auth::logout();
+                    return redirect('/')
+                        ->withErrors(['email' => 'Akun mitra belum disetujui admin']);
+                }
                 return redirect('/mitra/dashboard');
             }
 
@@ -58,7 +63,8 @@ class AuthController extends Controller
         ]);
     }
 
-    // LOGOUT (opsional tapi penting)
+
+    // LOGOUT
     public function logout(Request $request)
     {
         Auth::logout();

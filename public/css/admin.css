@@ -1,0 +1,357 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Main Title */
+h2 {
+    text-align: center;
+    padding: 2.5rem;
+    color: #667eea;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Table Container */
+.tabel {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-collapse: collapse;
+}
+
+table th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+table td {
+    padding: 1.3rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    color: #555;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr {
+    transition: all 0.3s ease;
+}
+
+table tbody tr:hover {
+    background: linear-gradient(to right, #f8f9fa, #ffffff);
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+/* Role Badge Styling */
+table td:nth-child(3) {
+    font-weight: 600;
+}
+
+table tr td:nth-child(3) {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* Role Color Coding */
+table tr:has(td:nth-child(3):contains('admin')) td:nth-child(3) {
+    color: #667eea;
+}
+
+table tr:has(td:nth-child(3):contains('mitra')) td:nth-child(3) {
+    color: #51cf66;
+}
+
+table tr:has(td:nth-child(3):contains('user')) td:nth-child(3) {
+    color: #ffa94d;
+}
+
+/* Alternative: Using data attributes for role styling */
+table td[data-role="admin"] {
+    color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+table td[data-role="mitra"] {
+    color: #51cf66;
+    background: rgba(81, 207, 102, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+table td[data-role="user"] {
+    color: #ffa94d;
+    background: rgba(255, 169, 77, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+/* Empty State */
+table tbody:empty::after {
+    content: 'Tidak ada data user';
+    display: table-cell;
+    text-align: center;
+    padding: 4rem;
+    color: #999;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Stats Cards (Optional Enhancement) */
+.stats-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+}
+
+.stat-card h3 {
+    color: #667eea;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card p {
+    color: #777;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    h2 {
+        font-size: 2rem;
+        padding: 2rem;
+    }
+
+    .tabel {
+        padding: 0 1.5rem;
+    }
+
+    table th,
+    table td {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem;
+        padding: 1.5rem;
+    }
+
+    .tabel {
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    /* Convert table to cards on mobile */
+    table {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    table, table thead, table tbody, table th, table td, table tr {
+        display: block;
+    }
+
+    table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    table tr {
+        margin-bottom: 1.5rem;
+        border: 2px solid #f0f0f0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        background: white;
+    }
+
+    table td {
+        border: none;
+        position: relative;
+        padding: 1rem 1rem 1rem 45%;
+        text-align: right;
+    }
+
+    table td:before {
+        position: absolute;
+        left: 1rem;
+        width: 40%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 700;
+        color: #667eea;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+
+    table td:nth-of-type(1):before { content: "Nama"; }
+    table td:nth-of-type(2):before { content: "Email"; }
+    table td:nth-of-type(3):before { content: "Role"; }
+
+    table td:nth-of-type(1) {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 1.2rem;
+        text-align: center;
+    }
+
+    table td:nth-of-type(1):before {
+        display: none;
+    }
+
+    table tbody tr:hover {
+        transform: scale(1.02);
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem;
+        padding: 1.2rem;
+    }
+
+    .tabel {
+        padding: 0 0.5rem;
+    }
+
+    table td {
+        padding: 0.8rem 0.8rem 0.8rem 42%;
+        font-size: 0.9rem;
+    }
+
+    table td:nth-of-type(1) {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+
+/* Animation for rows */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+table tbody tr {
+    animation: fadeInUp 0.5s ease;
+}
+
+/* Add animation delay for each row */
+table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Loading State (Optional) */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: #999;
+    font-size: 1.1rem;
+}
+
+.loading::after {
+    content: '...';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
